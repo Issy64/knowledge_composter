@@ -302,5 +302,37 @@
     "status": "new",
     "created_at": "2026-10-01T20:35:00+09:00",
     "last_tested_at": null
+  },
+  {
+    "term": "ActivityManager と Intent ルーティング",
+    "summary": "Android OS内で「どのアプリの・どの画面（Activity）を・いつ起動するか」を中央管理するシステム機構。暗黙的Intentが投げられた際、各アプリの AndroidManifest.xml に書かれた intent-filter の条件と照らし合わせ、「このURLなら、このアプリが適任だ」と裏側でマッチング・ルーティングを行うコンシェルジュのような役割。",
+    "how_to_use": "App Linksなどで「URLを踏んだら自作アプリが開く」はずなのにブラウザが開いてしまうバグの調査時に、「OSのルーティング機構（ActivityManager）が、うちのアプリの intent-filter をどう解釈して弾いたのか？」という、OSレベルの振る舞いを疑う文脈で意識する。",
+    "status": "new",
+    "created_at": "2026-10-06T00:25:20+09:00",
+    "last_tested_at": null
+  },
+  {
+    "term": "TaskStackBuilder (Back Stack の構築)",
+    "summary": "アプリが通知やウィジェットから「いきなり深い階層の画面」を開かれた際に、ユーザーが戻るボタンを押してアプリが即終了してしまわないよう、意図的に「嘘の履歴（戻るための道筋：Back Stack）」をメモリ上に組み立てるための仕組み。",
+    "how_to_use": "プッシュ通知をタップして「詳細画面」に飛んだ後、戻るボタンで「ホーム画面（トップ）」に戻るという、ユーザーにとって自然な画面遷移の体験（UX）を実装する際に使う。",
+    "status": "new",
+    "created_at": "2026-10-06T00:25:20+09:00",
+    "last_tested_at": null
+  },
+  {
+    "term": "Play App Signing（本番での署名鍵の不一致）",
+    "summary": "開発者がアップロードしたアプリから一旦「アップロード用の鍵」を外し、Google Play側が厳重に管理する本番用の「アプリ署名鍵」で再署名（パッケージし直し）してユーザーに配信する仕組み。鍵の紛失を防ぐためのGoogleの親心。",
+    "how_to_use": "App Linksの認証ファイル（assetlinks.json）やFirebase連携において、「ローカルビルドでは動くのに、本番リリースした途端に認証エラーになる」という罠にハマった際、「あ、Google Play Console上で再署名されたことでSHA-256の指紋が変わったんだ！」と原因を特定し、本番用の鍵を各サービスに登録し直す場面で使う。",
+    "status": "new",
+    "created_at": "2026-10-06T00:25:20+09:00",
+    "last_tested_at": null
+  },
+  {
+    "term": "WebView と Chrome Custom Tabs の違い",
+    "summary": "どちらもアプリ内でWebを表示する仕組みだが、「WebView」は単なる空のブラウザ部品であり一から作り込みが必要なのに対し、「Chrome Custom Tabs」は端末のChromeブラウザそのものをアプリの一部として一時的に間借りして表示する仕組み。",
+    "how_to_use": "アプリ内にWebページを表示させる際、「WebViewでわざわざCookie管理や進む/戻るボタンを作るのは面倒だし、ユーザーも再ログインが嫌だろう」と判断し、Chromeに保存済みのログイン情報（Cookieやパスワード）がそのまま使えて実装も楽な「Chrome Custom Tabs」を推奨の選択肢として選定する場面で使う。",
+    "status": "new",
+    "created_at": "2026-10-06T00:25:20+09:00",
+    "last_tested_at": null
   }
 ]
