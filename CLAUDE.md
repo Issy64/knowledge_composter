@@ -12,7 +12,7 @@
 
 ## data.json の編集
 実ファイルの書式（これに合わせる）:
-- トップレベルは配列。各要素のキーは次の6つで、順序もこのまま: `term`, `summary`, `how_to_use`, `status`, `created_at`, `last_tested_at`（README のデータ構造は4項目だけの古い記述）
+- トップレベルは配列。各要素のキーは次の6つで、順序もこのまま: `term`, `summary`, `how_to_use`, `status`, `created_at`, `last_tested_at`
 - インデントはスペース2つ。日本語は `\uXXXX` にエスケープせずそのまま書く。ファイル末尾は改行1つ。
 - 日時は JST の ISO 8601 で秒まで書く: `"2026-10-06T00:25:20+09:00"`。未テストの `last_tested_at` は `null`。
 - `status` は `new` / `reviewing` / `learned` のどれか。新規登録は `status: "new"`・`last_tested_at: null` で配列の末尾に追加する。
