@@ -430,5 +430,21 @@
     "status": "new",
     "created_at": "2026-10-15T12:57:06+09:00",
     "last_tested_at": null
+  },
+  {
+    "term": "Firebase",
+    "summary": "Googleが提供する、モバイルおよびWebアプリ向けのバックエンドサービス群（BaaS: Backend as a Service）。認証、リアルタイムデータベース（Firestore）、ストレージ、プッシュ通知、クラッシュ解析などのサーバー機能を包括的に提供するプラットフォーム。",
+    "how_to_use": "サーバー側を一から自前で実装・運用せずに、素早くアプリの認証基盤やDBを立ち上げたい場合や、Crashlytics・FCM（プッシュ通知）などのアプリ必須基盤を一元管理・導入する場面で選定・利用する。",
+    "status": "new",
+    "created_at": "2026-10-19T14:50:41+09:00",
+    "last_tested_at": null
+  },
+  {
+    "term": "Firebase App Distribution",
+    "summary": "モバイルアプリ（iOS / Android）のプレリリース版（テスト用ビルド）を、公式ストア（App Store / Google Play）の審査を通さずに、社内外のテスター端末へ迅速かつ直接配布・管理するための配信サービス。",
+    "how_to_use": "CI/CDパイプライン（GitHub ActionsやFastlaneなど）と連携し、ビルドしたアプリを自動的にQAチームやクライアントへ配信して即座にテストしてもらうなど、ストア公開前のフィードバックサイクルを高速化する場面で使う。",
+    "status": "new",
+    "created_at": "2026-10-19T14:50:41+09:00",
+    "last_tested_at": null
   }
 ]
