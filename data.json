@@ -526,5 +526,29 @@
     "status": "new",
     "created_at": "2026-10-25T23:20:59+09:00",
     "last_tested_at": null
+  },
+  {
+    "term": "Room（Kotlin / Android のローカルDB）",
+    "summary": "Android Jetpack の永続化ライブラリで、端末内の SQLite を直接触る代わりに、型安全に読み書きできるようにする「ORM寄りの抽象化レイヤー」。@Entity（テーブル）・@Dao（クエリを書くインターフェース）・@Database（DB本体）の3つのアノテーションで構成される。SQL はコンパイル時に検証されるので、クエリの書き間違いがビルドの段階で見つかる。Room 2.7 からは Kotlin Multiplatform（iOS など）にも対応した。",
+    "how_to_use": "Android アプリでオフライン用のキャッシュ・下書き・履歴を端末に保存したいときに、まず候補に挙がる公式の選択肢。DAO の戻り値を Flow にしておけば、DB が更新されるたびに UI が自動で更新される。アプリのバージョンアップでテーブル構造を変えるときは Migration を書く必要があり、書き忘れるとクラッシュやデータ消失につながるので、レビューで確認するポイントになる。",
+    "status": "new",
+    "created_at": "2026-10-27T07:49:57+09:00",
+    "last_tested_at": null
+  },
+  {
+    "term": "Realm（Android / Kotlin のローカルDB）",
+    "summary": "SQLite を使わず独自エンジンで動く、モバイル向けのオブジェクト指向DB。テーブルに変換せずオブジェクトをそのまま保存・参照でき、参照中のオブジェクトはデータが変わると自動で最新になる（live object）。2019年に MongoDB が買収したが、2024年9月に Device SDK / Device Sync の非推奨化が発表され、2025年9月に提供終了した。SDK はオープンソースとして残るが、公式の保守はもうない。Kotlin SDK はコンパイラプラグインで動くため、Kotlin のバージョンに強く依存する。",
+    "how_to_use": "Android のローカルDB選定で「Room vs Realm」と比較される相手。今は新規採用より、既存アプリで使われている Realm をどう処分するかの文脈で出てくることが多い。保守が止まったため、新しい Kotlin に対応した SDK はもう出ない。AGP や他のライブラリの都合で Kotlin を上げざるを得なくなると、Realm がビルドできずにアップデート全体が詰まる。なので「Kotlin を上げる前に Room などへの移行を終わらせる」という移行計画の順番を決めるときに、この単語が出てくる。",
+    "status": "new",
+    "created_at": "2026-10-27T07:49:57+09:00",
+    "last_tested_at": null
+  },
+  {
+    "term": "context.rollback()（Swift: Core Data / SwiftData）",
+    "summary": "Core Data（NSManagedObjectContext）や SwiftData（ModelContext）で、コンテキスト上のまだ保存していない変更をすべて捨てて、最後に保存した状態へ戻すメソッド。挿入したオブジェクトは消え、削除しかけたオブジェクトは元に戻り、書き換えた値は保存時点の値に戻る。Core Data では Undo の履歴も一緒に消える。取り消せるのは save() する前の変更だけで、保存済みのデータは戻せない。この点で、DB のトランザクションの ROLLBACK とは意味が違う。",
+    "how_to_use": "編集画面で「キャンセル」が押されたとき、フォームで書き換えた途中の変更をまとめて取り消す処理として書く。save() が失敗したときに、コンテキストを保存済みの状態へ戻して、中途半端な変更が残らないようにする用途でも使う。1手ずつ戻したいなら undoManager の undo、全部まとめて捨てたいなら rollback()、という使い分けになる。コードレビューでは「save() の後で rollback() しても意味がない」という点が確認ポイント。",
+    "status": "new",
+    "created_at": "2026-10-27T07:49:57+09:00",
+    "last_tested_at": null
   }
 ]
