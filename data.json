@@ -566,5 +566,21 @@
     "status": "new",
     "created_at": "2026-10-27T13:30:57+09:00",
     "last_tested_at": null
+  },
+  {
+    "term": "am kill（adb shell am kill）",
+    "summary": "Android の ActivityManager（am）を操作する adb シェルコマンドのひとつで、`adb shell am kill <パッケージ名>` の形で使う。指定したアプリのプロセスのうち、バックグラウンドにあって安全に終了できるものだけを終了させる。メモリ不足のときに OS がプロセスを回収する動き（LMK などによる「プロセスデス」）を手動で再現するためのもの。似たコマンドの `am force-stop` は、フォアグラウンドかどうかに関係なくアプリを丸ごと止めて「停止状態」にし、サービスやアラームも止める。am kill はそこが違う。",
+    "how_to_use": "【プロセスデスからの復元テスト】アプリで入力や画面遷移をしたらホームボタンでバックグラウンドに回し、`adb shell am kill com.example.app` を実行する。そのあと履歴（最近使ったアプリ）から戻り、onSaveInstanceState や SavedStateHandle で入力内容や画面の状態が復元されるかを確認する。「しばらく放置したら入力が消えていた」「戻ったらクラッシュした」という不具合の再現に使う。【ハマりどころ】アプリが前面に出たまま実行しても何も起きない。必ずバックグラウンドに回してから打つ。【使い分け】OS による自然な回収を再現したいなら am kill、ユーザーが設定画面で「強制停止」したときの状態を再現したいなら am force-stop。",
+    "status": "new",
+    "created_at": "2026-11-02T15:34:44+09:00",
+    "last_tested_at": null
+  },
+  {
+    "term": "Interface Builder（インターフェースビルダー / IB）",
+    "summary": "Xcode に組み込まれた、UIKit（macOS では AppKit）の画面をコードを書かずにドラッグ&ドロップで作るためのビジュアルエディタ。編集した内容は .storyboard（複数の画面と画面遷移をまとめたもの）や .xib（1画面や部品1つ分）という XML ファイルに保存される。コードとは @IBOutlet（画面の部品をコードから参照する）と @IBAction（ボタンを押したときなどにコードの処理を呼ぶ）でつなぐ。SwiftUI は IB を使わず、コードを書くと Canvas（プレビュー）に表示される方式になっている。",
+    "how_to_use": "【画面を作る・直す】Storyboard を開いてボタンやラベルを置き、Auto Layout の制約（Constraint）で位置やサイズを決める。画面どうしは Segue（矢印）でつないで遷移を定義する。Android でいうと、XML レイアウトを Layout Editor で触る感覚に近い。【テストでよく見るクラッシュ】`this class is not key value coding-compliant for the key 〇〇` というエラーで落ちたら、IB 側に残っている @IBOutlet の接続と、コード側の変数名がずれている（変数を消した・名前を変えた）のが典型的な原因。【チーム開発でのハマりどころ】Storyboard の中身は XML なので、複数人で同じファイルを触るとマージコンフリクトが起きやすい。そのため画面ごとに Storyboard や xib を分けたり、コードだけで UI を組んだりするプロジェクトもある。",
+    "status": "new",
+    "created_at": "2026-11-02T15:34:44+09:00",
+    "last_tested_at": null
   }
 ]
